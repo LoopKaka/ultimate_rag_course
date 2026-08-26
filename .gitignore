@@ -137,3 +137,5 @@ dmypy.json
 
 # LSP config
 .lsp/
+
+.DS_Store
