@@ -1,5 +1,6 @@
 from openai import OpenAI
 from dotenv import load_dotenv
+import json
 
 load_dotenv()
 
@@ -83,7 +84,10 @@ def query_analyser_rewritter(query=None, conversation_history=None):
         input=prompt
     )
 
-    return response.output_text.strip()
+    # We need to use the "search_query" key. I forgot to mention this in the video.
+    # response.output_text is a string type, so 1st load as json and access search_query
+    output_dist = json.loads(response.output_text)
+    return output_dist.get("search_query")
 
 def query_rewritter(query=None, conversation_history=None):
     prompt = PROMPT.format(question=query, conversation_history=conversation_history)
