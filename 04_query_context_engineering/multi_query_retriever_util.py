@@ -6,6 +6,7 @@ from pydantic import BaseModel
 from retriever import retrive_chunks
 from reranking import rerank_document
 from context_selection import select_context
+from context_compression import compression
 
 load_dotenv()
 
@@ -88,11 +89,18 @@ def multi_query_retriever(user_input, query, number_of_queries=3):
     queries = generate_multiple_queries(query, number_of_queries)
     relevent_chunks = retrive_multi_query(queries)
     unique_chunks = remove_duplicate_chunks(relevent_chunks)
-    top_chunks = rerank_document(user_input, unique_chunks)
+    top_chunks = rerank_document(user_input, unique_chunks, top_k=20)
 
     # Episode for context selection
-    # selected_chunks = select_context(top_chunks, top_k=5, score_threshold=0.3)
+    # selected_chunks = select_context(top_chunks, top_k=5, score_threshold=0.1)
     # return selected_chunks
+
+    # Episode for context compression
+    # compressed_docs = []
+    # for document, score in selected_chunks:
+    #     compressed_doc = compression(query=query, document=document)
+    #     print("Compressed Doc >> ", compressed_doc, "\n")
+    #     compressed_docs.append((compressed_doc, score))
 
     return top_chunks
 
