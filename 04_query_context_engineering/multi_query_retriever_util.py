@@ -5,6 +5,7 @@ from config import TEXT_MODEL
 from pydantic import BaseModel
 from retriever import retrive_chunks
 from reranking import rerank_document
+from context_selection import select_context
 
 load_dotenv()
 
@@ -88,6 +89,10 @@ def multi_query_retriever(user_input, query, number_of_queries=3):
     relevent_chunks = retrive_multi_query(queries)
     unique_chunks = remove_duplicate_chunks(relevent_chunks)
     top_chunks = rerank_document(user_input, unique_chunks)
+
+    # Episode for context selection
+    # selected_chunks = select_context(top_chunks, top_k=5, score_threshold=0.3)
+    # return selected_chunks
 
     return top_chunks
 
