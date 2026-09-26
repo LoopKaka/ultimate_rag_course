@@ -89,7 +89,9 @@ def multi_query_retriever(user_input, query, number_of_queries=3):
     queries = generate_multiple_queries(query, number_of_queries)
     relevent_chunks = retrive_multi_query(queries)
     unique_chunks = remove_duplicate_chunks(relevent_chunks)
-    top_chunks = rerank_document(user_input, unique_chunks, top_k=20)
+    top_chunks = rerank_document(user_input, unique_chunks)
+    
+    # top_chunks = rerank_document(user_input, unique_chunks, top_k=20)
 
     # Episode for context selection
     # selected_chunks = select_context(top_chunks, top_k=5, score_threshold=0.1)
@@ -101,6 +103,7 @@ def multi_query_retriever(user_input, query, number_of_queries=3):
     #     compressed_doc = compression(query=query, document=document)
     #     print("Compressed Doc >> ", compressed_doc, "\n")
     #     compressed_docs.append((compressed_doc, score))
+    # return compressed_docs
 
     return top_chunks
 
