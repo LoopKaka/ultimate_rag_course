@@ -1,3 +1,4 @@
+from collections import defaultdict
 from pathlib import Path
 import uuid
 
@@ -69,12 +70,23 @@ def enrich_document_metadata(document):
 
     return document
 
+def enrich_chunk_metadata(chunks):
+    counter = defaultdict(int)
+
+    for chunk in chunks:
+        source = chunk.metadata.get("source", "")
+
+        chunk.metadata["chunk_index"] = (counter[source])
+        counter[source] += 1
+    return chunks
+
 documents = load_documents()
 for document in documents:
     enrich_document_metadata(document)
 
 chunks = chunking_document(documents)
+chunks_with_metadata = enrich_chunk_metadata(chunks)
 print("Documents: ", len(documents))
 print("Chunks: ", len(chunks))
 
-strore_in_db(chunks)
+strore_in_db(chunks_with_metadata)

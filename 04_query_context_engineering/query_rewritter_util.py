@@ -1,10 +1,22 @@
-from openai import OpenAI
+from langchain_openai import ChatOpenAI
 from dotenv import load_dotenv
-import json
+from config import TEXT_MODEL
+from pydantic import BaseModel
 
 load_dotenv()
 
-client = OpenAI()
+llm = ChatOpenAI(
+    model=TEXT_MODEL,
+    temperature=0
+)
+
+class RewritterResponse(BaseModel):
+    rewrite: bool
+    search_query: str
+
+strcutured_llm = llm.with_structured_output(
+    RewritterResponse
+)
 
 POMPT_FOR_ANALYSE_REWRITE="""
 You are a query analysis and rewriting component 
@@ -79,24 +91,15 @@ def conversation_formatting(conversation_history=[]):
 def query_analyser_rewritter(query=None, conversation_history=None):
     prompt = POMPT_FOR_ANALYSE_REWRITE.format(question=query, 
                         conversation_history=conversation_history)
-    response = client.responses.create(
-        model="gpt-4.1-mini",
-        input=prompt
-    )
+    response = strcutured_llm.invoke(prompt)
 
-    # We need to use the "search_query" key. I forgot to mention this in the video.
-    # response.output_text is a string type, so 1st load as json and access search_query
-    output_dist = json.loads(response.output_text)
-    return output_dist.get("search_query")
+    return response.search_query
 
 def query_rewritter(query=None, conversation_history=None):
     prompt = PROMPT.format(question=query, conversation_history=conversation_history)
-    response = client.responses.create(
-        model="gpt-4.1-mini",
-        input=prompt
-    )
+    response = llm.invoke(prompt)
 
-    return response.output_text.strip()
+    return response.content
 
 """
 if __name__ == "__main__":
@@ -113,5 +116,5 @@ if __name__ == "__main__":
             user_input, conversation_formatting(convesation_history)
             )
         print(new_query)
-
 """
+
