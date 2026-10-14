@@ -1,0 +1,223 @@
+{
+  "summery": {
+    "collection_name": "rag_evaluation",
+    "dataset_name": "dataset_evaluation.json",
+    "retrieval_mode": "HYBRID",
+    "total_questions": 10,
+    "avg_correctness": 5,
+    "avg_faithfulness": 5,
+    "avg_answer_relevance": 5
+  },
+  "results": [
+    {
+      "question_id": "q1",
+      "question": "How does springboot auto configuration work?",
+      "ground_truth": "Spring Boot automatically configures an application based on the dependencies available in the project.",
+      "generated_answer": "Spring Boot auto-configuration works by automatically configuring an application based on the dependencies available in the project. When you add certain starter dependencies, Spring Boot configures many of the components required for the application, reducing the need for complex manual setup and boilerplate configuration. This allows developers to get started quickly without extensive XML configuration.",
+      "score": {
+        "correctness": 5,
+        "faithfulness": 5,
+        "answer_relevance": 5
+      },
+      "normalized_score": {
+        "correctness": 1.0,
+        "faithfulness": 1.0,
+        "answer_relevance": 1.0
+      },
+      "reason": {
+        "correctness": "Answer matches the ground truth exactly.",
+        "faithfulness": "All facts are directly supported by the retrieved context.",
+        "answer_relevance": "Answer directly explains how Spring Boot auto-configuration works as asked."
+      }
+    },
+    {
+      "question_id": "q2",
+      "question": "Which embedded servers does Spring Boot support, and what is the benefit of using an embedded server?",
+      "ground_truth": "Spring Boot supports embedded web servers, allowing applications to run without requiring a separately installed application server. Common embedded server options include Tomcat, Jetty, and Undertow.",
+      "generated_answer": "Spring Boot supports the following embedded servers:\n\n- Tomcat\n- Jetty\n- Undertow\n\nThe benefit of using an embedded server is that it allows applications to run without requiring a separately installed application server, enabling a Spring Boot web application to start its embedded server when the application runs. This reduces boilerplate configuration and helps developers get started quickly.",
+      "score": {
+        "correctness": 5,
+        "faithfulness": 5,
+        "answer_relevance": 5
+      },
+      "normalized_score": {
+        "correctness": 1.0,
+        "faithfulness": 1.0,
+        "answer_relevance": 1.0
+      },
+      "reason": {
+        "correctness": "Answer matches ground truth and context exactly.",
+        "faithfulness": "All facts are directly supported by the retrieved context.",
+        "answer_relevance": "Answer fully addresses both parts of the question clearly."
+      }
+    },
+    {
+      "question_id": "q3",
+      "question": "What is the purpose of the spring-boot-starter-web dependency?",
+      "ground_truth": "The spring-boot-starter-web dependency provides commonly used dependencies for building web applications and REST APIs.",
+      "generated_answer": "The purpose of the `spring-boot-starter-web` dependency is to provide commonly used dependencies for building web applications and REST APIs, simplifying dependency management and reducing boilerplate configuration.",
+      "score": {
+        "correctness": 5,
+        "faithfulness": 5,
+        "answer_relevance": 5
+      },
+      "normalized_score": {
+        "correctness": 1.0,
+        "faithfulness": 1.0,
+        "answer_relevance": 1.0
+      },
+      "reason": {
+        "correctness": "Answer matches ground truth exactly.",
+        "faithfulness": "Answer is fully supported by retrieved context.",
+        "answer_relevance": "Answer directly addresses the question about the dependency's purpose."
+      }
+    },
+    {
+      "question_id": "q4",
+      "question": "What production-ready features does Spring Boot provide?",
+      "ground_truth": "Spring Boot provides application health monitoring, metrics and monitoring integration, externalized configuration, and application management through Spring Boot Actuator. These features help developers monitor and configure applications across different environments.",
+      "generated_answer": "Spring Boot provides the following production-ready features:\n\n- Application health monitoring.\n- Metrics and monitoring integration.\n- Externalized configuration.\n- Support for application management through Spring Boot Actuator.",
+      "score": {
+        "correctness": 5,
+        "faithfulness": 5,
+        "answer_relevance": 5
+      },
+      "normalized_score": {
+        "correctness": 1.0,
+        "faithfulness": 1.0,
+        "answer_relevance": 1.0
+      },
+      "reason": {
+        "correctness": "Answer matches Ground Truth exactly.",
+        "faithfulness": "All facts are directly supported by the Retrieved Context.",
+        "answer_relevance": "Answer fully addresses the question about production-ready features."
+      }
+    },
+    {
+      "question_id": "q5",
+      "question": "How can developers configure a Spring Boot application without using XML?",
+      "ground_truth": "Developers can configure Spring Boot applications using Java annotations, Java configuration classes, and properties or YAML files. Application settings can be maintained in application.properties or application.yml.",
+      "generated_answer": "Developers can configure a Spring Boot application without using XML by using Java annotations, Java configuration classes, and properties or YAML files, such as `application.properties` or `application.yml`.",
+      "score": {
+        "correctness": 5,
+        "faithfulness": 5,
+        "answer_relevance": 5
+      },
+      "normalized_score": {
+        "correctness": 1.0,
+        "faithfulness": 1.0,
+        "answer_relevance": 1.0
+      },
+      "reason": {
+        "correctness": "Answer matches ground truth exactly.",
+        "faithfulness": "Answer is fully supported by the retrieved context.",
+        "answer_relevance": "Answer directly addresses how to configure without XML."
+      }
+    },
+    {
+      "question_id": "q6",
+      "question": "What is Express.js, and what types of applications is it commonly used to build?",
+      "ground_truth": "Express.js is a minimal, fast, and flexible web application framework for Node.js. It is commonly used to build web applications and REST APIs.",
+      "generated_answer": "Express.js is a minimal, fast, and flexible web application framework for Node.js that simplifies backend development by providing features for building web applications and REST APIs. It is commonly used to build REST APIs and web applications.",
+      "score": {
+        "correctness": 5,
+        "faithfulness": 5,
+        "answer_relevance": 5
+      },
+      "normalized_score": {
+        "correctness": 1.0,
+        "faithfulness": 1.0,
+        "answer_relevance": 1.0
+      },
+      "reason": {
+        "correctness": "Answer matches ground truth and context exactly.",
+        "faithfulness": "All facts are directly supported by the retrieved context.",
+        "answer_relevance": "Answer fully addresses the question about Express.js and its common uses."
+      }
+    },
+    {
+      "question_id": "q7",
+      "question": "How does Express.js routing handle different HTTP methods?",
+      "ground_truth": "Express.js routing determines how an application responds to incoming HTTP requests based on the request URL and HTTP method. GET retrieves data, POST creates or submits data, PUT updates or replaces a resource, and DELETE deletes a resource.",
+      "generated_answer": "Express.js routing handles different HTTP methods by defining different route handlers for the same URL path based on the HTTP method. For example, an Express.js application can define separate handlers for the `/users` route depending on whether the request uses `GET`, `POST`, `PUT`, or `DELETE`. This allows the application to respond appropriately to each type of HTTP request.",
+      "score": {
+        "correctness": 5,
+        "faithfulness": 5,
+        "answer_relevance": 5
+      },
+      "normalized_score": {
+        "correctness": 1.0,
+        "faithfulness": 1.0,
+        "answer_relevance": 1.0
+      },
+      "reason": {
+        "correctness": "Answer matches ground truth exactly regarding HTTP methods and routing.",
+        "faithfulness": "All facts are directly supported by the retrieved context.",
+        "answer_relevance": "Answer directly explains how Express.js routing handles different HTTP methods."
+      }
+    },
+    {
+      "question_id": "q8",
+      "question": "What are common Express.js middleware use cases, and why is middleware useful?",
+      "ground_truth": "Common middleware use cases include authentication and authorization, request logging, parsing request bodies, error handling, and request validation. Middleware helps developers organize reusable functionality across multiple routes.",
+      "generated_answer": "Common Express.js middleware use cases include authentication and authorization, request logging, parsing request bodies, error handling, and request validation. Middleware is useful because it allows developers to organize reusable functionality across multiple routes.",
+      "score": {
+        "correctness": 5,
+        "faithfulness": 5,
+        "answer_relevance": 5
+      },
+      "normalized_score": {
+        "correctness": 1.0,
+        "faithfulness": 1.0,
+        "answer_relevance": 1.0
+      },
+      "reason": {
+        "correctness": "Answer matches ground truth and context exactly.",
+        "faithfulness": "All facts are directly supported by the retrieved context.",
+        "answer_relevance": "Answer fully addresses the question about middleware use cases and usefulness."
+      }
+    },
+    {
+      "question_id": "q9",
+      "question": "How does Express.js support flexible application organization and server-side HTML rendering?",
+      "ground_truth": "Express.js is unopinionated and does not enforce a strict application structure, allowing developers to organize routes, controllers, services, and other modules according to their requirements. It can integrate with template engines such as Pug, Mustache, and EJS to generate dynamic HTML pages on the server.",
+      "generated_answer": "Express.js supports flexible application organization by allowing developers to organize routes, controllers, services, and other modules according to their project requirements without enforcing a strict application structure. This flexibility makes it suitable for both small applications and larger backend systems.\n\nFor server-side HTML rendering, Express.js can integrate with template engines such as Pug, Mustache, and EJS. These template engines enable applications to combine templates with data to generate dynamic HTML pages on the server.",
+      "score": {
+        "correctness": 5,
+        "faithfulness": 5,
+        "answer_relevance": 5
+      },
+      "normalized_score": {
+        "correctness": 1.0,
+        "faithfulness": 1.0,
+        "answer_relevance": 1.0
+      },
+      "reason": {
+        "correctness": "Answer fully matches Ground Truth and Context details.",
+        "faithfulness": "All facts are directly supported by the Retrieved Context.",
+        "answer_relevance": "Answer directly addresses both parts of the question completely."
+      }
+    },
+    {
+      "question_id": "q10",
+      "question": "How does Node.js help Express.js handle I/O-bound operations efficiently?",
+      "ground_truth": "Express.js runs on Node.js and benefits from its asynchronous, non-blocking I/O model. This allows applications to handle I/O-bound operations efficiently without blocking the main event loop while waiting for operations such as network or database requests. Actual performance also depends on application design, database operations, workload, and deployment configuration.",
+      "generated_answer": "Node.js helps Express.js handle I/O-bound operations efficiently by using its asynchronous, non-blocking I/O model. This model allows Node.js applications to handle many I/O-bound operations without blocking the main event loop while waiting for operations such as network or database requests.",
+      "score": {
+        "correctness": 5,
+        "faithfulness": 5,
+        "answer_relevance": 5
+      },
+      "normalized_score": {
+        "correctness": 1.0,
+        "faithfulness": 1.0,
+        "answer_relevance": 1.0
+      },
+      "reason": {
+        "correctness": "Answer fully matches the Ground Truth and context details.",
+        "faithfulness": "Answer is directly supported by the retrieved context.",
+        "answer_relevance": "Answer directly addresses how Node.js helps Express.js handle I/O-bound operations efficiently."
+      }
+    }
+  ]
+}
