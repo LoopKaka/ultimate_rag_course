@@ -16,6 +16,17 @@ def format_chunks(documents):
         )
     return context
 
+def get_chunk_ids(documents):
+    retrieved_chunk_ids = []
+
+    for document, _ in documents:
+        chunk_id = document.metadata.get("chunk_id")
+        retrieved_chunk_ids.append(chunk_id)
+
+    return retrieved_chunk_ids
+
+
+
 PROMPT_TEMPLATE = """
 You are a helpful AI assistant.
 Answer the user's question ONLY using the provided context.
@@ -39,12 +50,14 @@ Answer:
 def generate_llm_answer(question, top_k):
     documents = retrive_chunks(question, top_k)
     context = format_chunks(documents)
+    retrieved_chunk_ids = get_chunk_ids(documents)
     prompt = PROMPT_TEMPLATE.format(context=context, question=question)
 
     result = llm.invoke(prompt)
 
     return {
         "answer": result.content,
-        "context": context
+        "context": context,
+        "retrieved_chunk_ids": retrieved_chunk_ids
     }
 
