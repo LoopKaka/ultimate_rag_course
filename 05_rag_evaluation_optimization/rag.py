@@ -54,10 +54,13 @@ def generate_llm_answer(question, top_k):
     prompt = PROMPT_TEMPLATE.format(context=context, question=question)
 
     result = llm.invoke(prompt)
+    usage = result.usage_metadata
 
     return {
         "answer": result.content,
         "context": context,
-        "retrieved_chunk_ids": retrieved_chunk_ids
+        "retrieved_chunk_ids": retrieved_chunk_ids,
+        "input_tokens": usage["input_tokens"],
+        "output_tokens": usage["output_tokens"]
     }
 
