@@ -86,7 +86,8 @@ if __name__ == "__main__":
     state = {
         "question": user_input,
         "context": "",
-        "answer": ""
+        "answer": "",
+        "is_relevent": False
     }
 
     result = graph.invoke(state)
